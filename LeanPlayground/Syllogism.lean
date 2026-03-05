@@ -25,4 +25,23 @@ theorem socratesMortal
     : Mortal Socrates :=
   allHumansMortal Socrates socratesIsHuman
 
+-- Variant 2: tactic mode with `apply` + `assumption`
+-- `apply` unifies the goal with the conclusion of allHumansMortal,
+-- leaving `Human Socrates` as a subgoal.
+-- `assumption` then finds `socratesIsHuman` in the local context automatically.
+theorem socratesMortal2
+    (allHumansMortal : ∀ b : Being, Human b → Mortal b)
+    (socratesIsHuman : Human Socrates)
+    : Mortal Socrates := by
+  apply allHumansMortal
+  assumption
+
+-- Variant 3: tactic mode with `exact`
+-- `exact` closes the goal by providing the complete proof term directly.
+theorem socratesMortal3
+    (allHumansMortal : ∀ b : Being, Human b → Mortal b)
+    (socratesIsHuman : Human Socrates)
+    : Mortal Socrates := by
+  exact allHumansMortal Socrates socratesIsHuman
+
 end Syllogism
