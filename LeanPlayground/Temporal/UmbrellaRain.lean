@@ -1,5 +1,5 @@
-import LeanPlayground.Temporal
-import LeanPlayground.RainUmbrella
+import LeanPlayground.Temporal.Temporal
+import LeanPlayground.Temporal.RainUmbrella
 
 -- "If you have an umbrella, did it rain at some point?"
 -- This does NOT follow from rainPolicy alone (Rain → HasUmbrella is one-directional).

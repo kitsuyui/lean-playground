@@ -1,4 +1,4 @@
-import LeanPlayground.Temporal
+import LeanPlayground.Temporal.Temporal
 
 -- "If it rains, bring an umbrella."
 -- This is a conditional temporal property: □(Rain → BringUmbrella).
