@@ -45,3 +45,11 @@ theorem socratesMortal3
   exact allHumansMortal Socrates socratesIsHuman
 
 end Syllogism
+
+-- Variant 4: standalone form outside the section, equivalent to #print output of socratesMortal2.
+-- All variables are explicitly spelled out as ∀ parameters.
+theorem socratesMortal4 :
+    ∀ (Being : Type) (Human Mortal : Being → Prop) (Socrates : Being),
+    (∀ (b : Being), Human b → Mortal b) → Human Socrates → Mortal Socrates :=
+  fun _Being _Human _Mortal Socrates allHumansMortal socratesIsHuman =>
+    allHumansMortal Socrates socratesIsHuman
