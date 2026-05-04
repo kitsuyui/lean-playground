@@ -27,4 +27,7 @@ Expected output:
 
 ```
 Hello, World
+Hello from ExampleA
+Hello from ExampleB
+Hello from ExampleC
 ```
