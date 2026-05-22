@@ -17,10 +17,6 @@ def always {α : Type} (P : α → Prop) (t : Trace α) : Prop :=
 def eventually {α : Type} (P : α → Prop) (t : Trace α) : Prop :=
   ∃ n, P (t n)
 
--- ○ Next: P holds at the next point in time.
-def next {α : Type} (P : α → Prop) (t : Trace α) : Prop :=
-  P (t 1)
-
 -- □ implies ◇: if P always holds, then P eventually holds.
 theorem always_implies_eventually {α : Type} (P : α → Prop) (t : Trace α)
     (h : always P t) : eventually P t :=
