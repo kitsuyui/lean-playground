@@ -3,10 +3,19 @@
 -- (∀, ∃), with no separate syntax layer.
 -- The underlying model is Kripke semantics over a linear frame (Nat, successor):
 -- each natural number is a "world", and time flows along the successor relation.
+--
+-- Scope of this model:
+-- Every trace is infinite by construction (`Nat → α` is a total function).
+-- There is no built-in notion of "the trace ends at time n", so finite execution,
+-- program termination, and post-termination state are outside this model.
+-- If you need to reason about stopping conditions, consider wrapping the state
+-- in `Option α` or using a separate termination index alongside the trace.
 
 section Temporal
 
 -- A trace maps each time point (world in the Kripke frame) to a state.
+-- The `Nat → α` type makes every trace implicitly infinite: the function must
+-- return a state for every natural number, so there is no terminal time point.
 def Trace (α : Type) := Nat → α
 
 -- □ Always: P holds at every point in time.
@@ -18,6 +27,9 @@ def eventually {α : Type} (P : α → Prop) (t : Trace α) : Prop :=
   ∃ n, P (t n)
 
 -- □ implies ◇: if P always holds, then P eventually holds.
+-- The proof witnesses time 0 (the minimum element of Nat).
+-- This relies on Nat having a least element; the same argument would not
+-- work if the time domain were changed to Int or an abstract ordered type.
 theorem always_implies_eventually {α : Type} (P : α → Prop) (t : Trace α)
     (h : always P t) : eventually P t :=
   ⟨0, h 0⟩
