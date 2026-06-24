@@ -1,4 +1,5 @@
 import LeanPlayground.Basic
+import LeanPlayground.ExampleB.ExampleC
 
 def main : IO Unit := do
   IO.println "Hello, World"
