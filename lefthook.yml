@@ -1,6 +1,7 @@
 pre-push:
   commands:
-    lake-build:
+    lake-build-and-run-hello:
       run: >
         for name in $(env | sed -n 's/^\(GIT_[A-Za-z0-9_]*\)=.*/\1/p'); do unset "$name"; done;
-        lake build
+        lake build &&
+        lake exe hello
